@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import classes from './App.css';
 import Person from './PersonComponent/Person';
 import ValidationComponent from './ValidationComponent/ValidationComponent';
 import CharComponent from './CharComponent/CharComponent';
@@ -96,16 +96,16 @@ class App extends Component {
 			);
 		});
 
-		const classes = [];
+		const assignedClasses = [];
 		if (this.state.persons.length <= 2) {
-			classes.push('red');
+			assignedClasses.push(classes.red);
 		}
 		if (this.state.persons.length <= 1) {
-			classes.push('bold');
+			assignedClasses.push(classes.bold);
 		}
 
     return (
-      <div className="App">
+      <div className={classes.App}>
 				<h2>rubber baby buggy bumpers</h2>
 				<button 
 					style={style}
@@ -113,7 +113,7 @@ class App extends Component {
 					Toggle Names
 				</button>
 				{ this.state.showPersons ? <p>Showing</p>	: <p>Hiding</p> }
-				<div className={classes.join(' ')}>
+				<div className={assignedClasses.join(' ')}>
 					{ persons }
 				</div>
 				<input 
