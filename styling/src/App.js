@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Radium from 'radium';
+import Radium, { StyleRoot } from 'radium';
 import './App.css';
 import Person from './PersonComponent/Person';
 import ValidationComponent from './ValidationComponent/ValidationComponent';
@@ -115,6 +115,7 @@ class App extends Component {
 		}
 
     return (
+			<StyleRoot>
       <div className="App">
 				<h2>rubber baby buggy bumpers</h2>
 				<button 
@@ -135,6 +136,7 @@ class App extends Component {
 				<ValidationComponent input={this.state.validationInput} />	
 				{ charList }
       </div>
+		</StyleRoot>
     );
   };
 };
