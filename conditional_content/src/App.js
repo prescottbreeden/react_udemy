@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import Person from './Person/Person';
+import Person from './PersonComponent/Person';
 import ValidationComponent from './ValidationComponent/ValidationComponent';
 import CharComponent from './CharComponent/CharComponent';
 
@@ -60,7 +60,8 @@ class App extends Component {
 			padding: '15px 50px',
 			color: 'white',
 			borderRadius: '200px',
-			boxShadow: '0 10px 20px rgba(0,0,0,.2)'
+			boxShadow: '0 10px 20px rgba(0,0,0,.2)',
+			outline: 'none'
 		};
 
 		// create persons list
@@ -81,6 +82,7 @@ class App extends Component {
 					})}
 				</div>
 			);
+			style.backgroundColor = 'lightblue';
 		}
 
 		// create char list
@@ -94,6 +96,13 @@ class App extends Component {
 			);
 		});
 
+		const classes = [];
+		if (this.state.persons.length <= 2) {
+			classes.push('red');
+		}
+		if (this.state.persons.length <= 1) {
+			classes.push('bold');
+		}
 
     return (
       <div className="App">
@@ -104,11 +113,14 @@ class App extends Component {
 					Toggle Names
 				</button>
 				{ this.state.showPersons ? <p>Showing</p>	: <p>Hiding</p> }
-				{ persons }
+				<div className={classes.join(' ')}>
+					{ persons }
+				</div>
 				<input 
-					type='text' 
+					type='text'
 					onChange={this.validateInput} 
 					value={this.state.validationInput} />
+
 				<p>{ this.state.validationInput }</p>
 				<ValidationComponent input={this.state.validationInput} />	
 				{ charList }
