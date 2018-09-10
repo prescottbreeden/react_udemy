@@ -53,19 +53,11 @@ class App extends Component {
 
   render() {
 		// define button style
-		const style = {
-			backgroundColor: 'steelblue',
-			font: 'inherit',
-			border: 'none',
-			padding: '15px 50px',
-			color: 'white',
-			borderRadius: '200px',
-			boxShadow: '0 10px 20px rgba(0,0,0,.2)',
-			outline: 'none'
-		};
 
 		// create persons list
 		let persons = null;
+		let btnClass = '';
+
 		if(this.state.showPersons) {
 			persons = (
 				<div>
@@ -82,7 +74,7 @@ class App extends Component {
 					})}
 				</div>
 			);
-			style.backgroundColor = 'lightblue';
+			btnClass = classes.Red;
 		}
 
 		// create char list
@@ -96,6 +88,7 @@ class App extends Component {
 			);
 		});
 
+		// apply red styles to persons if <=2
 		const assignedClasses = [];
 		if (this.state.persons.length <= 2) {
 			assignedClasses.push(classes.red);
@@ -108,7 +101,6 @@ class App extends Component {
       <div className={classes.App}>
 				<h2>rubber baby buggy bumpers</h2>
 				<button 
-					style={style}
 					onClick={this.togglePersonsHandler}>
 					Toggle Names
 				</button>

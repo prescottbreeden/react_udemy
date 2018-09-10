@@ -1,4 +1,4 @@
-.person {
+.Person {
 	border: 1px solid green;
 	padding: 30px;
 	margin: 20px auto;
@@ -6,6 +6,6 @@
 	box-shadow: 0 10px 10px rgba(0, 0, 0, .2);
 }
 
-.person:last-child {
+.Person:last-child {
 	border-bottom: 1px solid green;
 }
