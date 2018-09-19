@@ -1,8 +1,8 @@
 import React from 'react';
-import './ValidationComponent.css';
+import './Validation.css';
 
 
-const validationComponent = (props) => {
+const validation= (props) => {
 	return (
 		props.input.length >= 5 ? 
 			<p className="valid">Valid Input</p> 
@@ -12,4 +12,4 @@ const validationComponent = (props) => {
 };
 
 
-export default validationComponent;
+export default validation;

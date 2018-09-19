@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
-import Person from './PersonComponent/Person';
-import ValidationComponent from './ValidationComponent/ValidationComponent';
-import CharComponent from './CharComponent/CharComponent';
+import Person from '../components/Persons/Person/Person';
+import Validation from '../components/Validation/Validation';
+import Char from '../components/Char/Char';
 
 class App extends Component {
 	state = {
@@ -88,7 +88,7 @@ class App extends Component {
 		// create char list
 		const charList = this.state.validationInput.split('').map((ch, index) => {
 			return (
-				<CharComponent 
+				<Char
 					character={ch} 
 					key={index}  
 					clicked={() => this.deleteChar(index)}
@@ -122,7 +122,7 @@ class App extends Component {
 					value={this.state.validationInput} />
 
 				<p>{ this.state.validationInput }</p>
-				<ValidationComponent input={this.state.validationInput} />	
+				<Validation input={this.state.validationInput} />	
 				{ charList }
       </div>
     );
