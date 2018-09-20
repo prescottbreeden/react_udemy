@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import classes from './Cockpit.css';
-import Aux from '../../hoc/Aux';
 
 
 const cockpit = (props) => {
@@ -18,7 +17,7 @@ const cockpit = (props) => {
 	}
 
 	return (
-		<Aux>
+		<Fragment>
 			<h2>{props.title}</h2>
 			<p className={assignedClasses.join(' ')}>There is no spoon</p>
 			<button 
@@ -27,7 +26,7 @@ const cockpit = (props) => {
 				onClick={props.clicked}>
 				Toggle Names
 			</button>
-		</Aux>
+		</Fragment>
 	)
 }
 

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import './Person.css';
 
 
@@ -30,11 +30,11 @@ class Person extends Component {
 	render() {
 		console.log('[RENDER] p.js render')
 		return (
-			<div className="person">
+			<Fragment>
 				<p onClick={this.props.click}>I think my name is {this.props.name}</p>
 				<p>Apparently I'm {Math.floor(Math.random() * 30)} years old even though I thought I was {this.props.age}...</p>
 				<input type='text' onChange={this.props.changed} value={this.props.name} />
-			</div>
+			</Fragment>
 		);
 	}
 }
