@@ -1,33 +1,33 @@
 import React from 'react';
 import classes from './Cockpit.css';
+import Aux from '../../hoc/Aux';
 
 
 const cockpit = (props) => {
-
-	const classes = [];
+	const assignedClasses = [];
+	let btnClass = 'btn';
 	if(props.showPersons) {
-		console.log('balls');
+		btnClass = ['btn', 'red'].join(' ');
 	}
 
-	// style.backgroundColor = 'lightblue';
-	if (props.persons.length <= 2) {
-		classes.push('red');
+	if(props.persons.length <=2) {
+		assignedClasses.push('red');
 	}
-
-	if (props.persons.length <= 1) {
-		classes.push('bold');
+	if(props.persons.length <=1) {
+		assignedClasses.push('bold');
 	}
 
 	return (
-		<div>
+		<Aux>
 			<h2>{props.title}</h2>
+			<p className={assignedClasses.join(' ')}>There is no spoon</p>
 			<button 
-				className='btn'
+				className={btnClass}
 				style={props.style}
 				onClick={props.clicked}>
 				Toggle Names
 			</button>
-		</div>
+		</Aux>
 	)
 }
 
