@@ -7,19 +7,45 @@ import Char from '../components/Char/Char';
 import Cockpit from '../components/Cockpit/Cockpit';
 
 class App extends Component {
-	state = {
-		persons: [
-			{ id: 1, name: 'bob', age: 34 },
-			{ id: 2, name: 'chuck', age: 28 },
-			{ id: 3, name: 'bugs', age: 50 },
-			{ id: 4, name: 'alan', age: 90 },
-			{ id: 5, name: 'jane', age: 22 },
-			{ id: 6, name: 'anita', age: 27 },
-			{ id: 7, name: 'ada', age: 228 }
-		],
-		showPersons: false,
-		validationInput: ''
-	};
+	constructor(props) {
+		super(props);
+		this.state = {
+			persons: [
+				{ id: 1, name: 'bob', age: 34 },
+				{ id: 2, name: 'chuck', age: 28 },
+				{ id: 3, name: 'bugs', age: 50 },
+				{ id: 4, name: 'alan', age: 90 },
+				{ id: 5, name: 'jane', age: 22 },
+				{ id: 6, name: 'anita', age: 27 },
+				{ id: 7, name: 'ada', age: 228 }
+			],
+			showPersons: false,
+			validationInput: ''
+		};
+		console.log('[CREATE] persons.js constructor', props);
+	}
+	componentWillMount() {
+		console.log('[CREATE] persons.js will mount');
+	}
+	componentWillUnmount() {
+		console.log('[CREATE] persons.js will unmount');
+	}
+	componentDidMount() {
+		console.log('[CREATE] persons.js did mount')
+	}
+	componentWillReceiveProps(nextProps) {
+		console.log('[UPDATE] app.js will receive props');
+	}
+	shouldComponentUpdate(nextProps, nextState) {
+		console.log('[UPDATE] app.js should?', nextProps, nextState);
+		return true;
+	}
+	componentWillUpdate(nextProps, nextState) {
+		console.log('[UPDATE] app.js will update');
+	}
+	componentDidUpdate() {
+		console.log('[UPDATE] app.js did update');
+	}
 
 	nameChangedHandler = (event, id) => {
 		const personIndex = this.state.persons.findIndex(p => p.id === id);
@@ -54,7 +80,7 @@ class App extends Component {
 	}
 
   render() {
-		// define button style
+		console.log('[RENDER] app.js render');
 
 		// create persons list
 		let persons = null;
