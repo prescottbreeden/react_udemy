@@ -1,0 +1,11 @@
+.person {
+	border: 1px solid green;
+	padding: 30px;
+	margin: 20px auto;
+	width: 50%;
+	box-shadow: 0 10px 10px rgba(0, 0, 0, .2);
+}
+
+.person:last-child {
+	border-bottom: 1px solid green;
+}

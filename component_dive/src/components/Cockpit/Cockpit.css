@@ -1,0 +1,18 @@
+.red {
+	color: red;
+}
+
+.bold {
+	font-weight: bold;
+}
+
+.btn {
+	background-color: steelblue;
+	font: inherit;
+	border: none;
+	padding: 15px 50px;
+	color: white;
+	border-radius: 200px;
+	box-shadow: 0 10px 20px rgba(0,0,0,.2);
+	outline: none;
+}
