@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import Person from './Person/Person';
 
 
-class Persons extends Component {
+class Persons extends PureComponent {
 	constructor(props) {
 		super(props);
 		console.log('[CREATE] persons.js constructor', props);
@@ -19,10 +19,15 @@ class Persons extends Component {
 	componentWillReceiveProps(nextProps) {
 		console.log('[UPDATE] persons.js will receive props');
 	}
-	shouldComponentUpdate(nextProps, nextState) {
-		console.log('[UPDATE] persons.js should?', nextProps, nextState);
-		return nextProps.persons !== this.props.persons;
-	}
+	// shouldComponentUpdate(nextProps, nextState) {
+	// 	console.log('[UPDATE] persons.js should?', nextProps, nextState);
+	// 	return (
+	// 		nextProps.persons !== this.props.persons ||
+	// 		nextProps.changed !== this.props.changed ||
+	// 		nextProps.clicked !== this.props.clicked
+	// 	);
+	// 	// return true;
+	// }
 	componentWillUpdate(nextProps, nextState) {
 		console.log('[UPDATE] persons.js will update');
 	}

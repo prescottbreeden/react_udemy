@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import './App.css';
 import Person from '../components/Persons/Person/Person';
 import Persons from '../components/Persons/Persons';
@@ -6,7 +6,7 @@ import Validation from '../components/Validation/Validation';
 import Char from '../components/Char/Char';
 import Cockpit from '../components/Cockpit/Cockpit';
 
-class App extends Component {
+class App extends PureComponent {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -36,10 +36,15 @@ class App extends Component {
 	componentWillReceiveProps(nextProps) {
 		console.log('[UPDATE] app.js will receive props');
 	}
-	shouldComponentUpdate(nextProps, nextState) {
-		console.log('[UPDATE] app.js should?', nextProps, nextState);
-		return true;
-	}
+	//shouldComponentUpdate(nextProps, nextState) {
+	//	console.log('[UPDATE] app.js should?', nextProps, nextState);
+	//	// return !this.state.showPersons;
+	//	//	return true;
+	//	return(
+	//		nextState.persons !== this.state.persons ||
+	//		nextState.showPersons !== this.state.showPersons
+	//	);
+	//}
 	componentWillUpdate(nextProps, nextState) {
 		console.log('[UPDATE] app.js will update');
 	}
@@ -105,6 +110,8 @@ class App extends Component {
 
     return (
       <div className="App">
+				<button
+					onClick={()=> this.setState({showPersons: true})}>Show Persons</button>
 				<Cockpit 
 					title={this.props.title}
 					persons={this.state.persons}
