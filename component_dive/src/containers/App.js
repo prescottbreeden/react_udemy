@@ -5,14 +5,13 @@ import Validation from '../components/Validation/Validation';
 import Char from '../components/Char/Char';
 import Cockpit from '../components/Cockpit/Cockpit';
 
+export const AuthContext = React.createContext(false);
+
 class App extends PureComponent {
 	constructor(props) {
 		super(props);
 		this.state = {
 			persons: [
-				{ id: 1, name: 'bob', age: 34 },
-				{ id: 2, name: 'chuck', age: 28 },
-				{ id: 3, name: 'bugs', age: 50 },
 				{ id: 4, name: 'alan', age: 90 },
 				{ id: 5, name: 'jane', age: 22 },
 				{ id: 6, name: 'anita', age: 27 },
@@ -20,7 +19,8 @@ class App extends PureComponent {
 			],
 			showPersons: false,
 			validationInput: '',
-			toggleClicked: 0
+			toggleClicked: 0,
+			authenticated: false
 		};
 		console.log('[CREATE] persons.js constructor', props);
 	}
@@ -78,6 +78,10 @@ class App extends PureComponent {
 		this.setState({persons: persons})
 	}
 
+	loginHandler = () => {
+		this.setState({ authenticated: true });
+	}
+
 	validateInput = (event) => {
 		this.setState({validationInput: event.target.value});
 	}
@@ -119,13 +123,15 @@ class App extends PureComponent {
 					onClick={()=> this.setState({showPersons: true})}>Show Persons</button>
 				<Cockpit 
 					title={this.props.title}
+					login={this.loginHandler}
 					persons={this.state.persons}
-					clicked={this.togglePersonsHandler}	
-				/>
+					clicked={this.togglePersonsHandler}	/>
 				{ this.state.showPersons ? <p>Showing</p>	: <p>Hiding</p> }
-				<div className=''>
-					{ persons }
-				</div>
+
+				<AuthContext.Provider 
+					value={this.state.authenticated}>
+					{persons}
+				</AuthContext.Provider>
 				<input 
 					type='text'
 					onChange={this.validateInput} 
