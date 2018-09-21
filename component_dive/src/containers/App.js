@@ -24,18 +24,15 @@ class App extends PureComponent {
 		};
 		console.log('[CREATE] persons.js constructor', props);
 	}
-	componentWillMount() {
-		console.log('[CREATE] persons.js will mount');
-	}
 	componentWillUnmount() {
 		console.log('[CREATE] persons.js will unmount');
 	}
 	componentDidMount() {
 		console.log('[CREATE] persons.js did mount')
 	}
-	componentWillReceiveProps(nextProps) {
-		console.log('[UPDATE] app.js will receive props');
-	}
+
+	// see 'togglePersonHandler for perferrable method to return 2+ state changes'
+	
 	//shouldComponentUpdate(nextProps, nextState) {
 	//	console.log('[UPDATE] app.js should?', nextProps, nextState);
 	//	// return !this.state.showPersons;
@@ -45,11 +42,39 @@ class App extends PureComponent {
 	//		nextState.showPersons !== this.state.showPersons
 	//	);
 	//}
-	componentWillUpdate(nextProps, nextState) {
-		console.log('[UPDATE] app.js will update');
+	
+	// unsafe lifecycle methods
+	// componentWillMount() {
+	// 	console.log('[CREATE] persons.js will mount');
+	// }
+	// componentWillUpdate(nextProps, nextState) {
+	// 	console.log('[UPDATE] app.js will update');
+	// }
+	// componentWillReceiveProps(nextProps) {
+	// 	console.log('[UPDATE] app.js will receive props');
+	// }
+
+	
+	// new lifecycle hooks added in 16.something
+	static getDerivedStateFromProps(nextProps, prevState) {
+		console.log(
+			'[UPDATE] app.js inside getDerivedStateFromProps',
+			nextProps,
+			prevState
+		);
+
+		return prevState;
 	}
+
+	getSnapshotBeforeUpdate() {
+		console.log('[UPDATE] app.js getSnapshotBeforeUpdate');
+		// save a scroll position (e.g.)
+		return null;
+	}
+
 	componentDidUpdate() {
 		console.log('[UPDATE] app.js did update');
+		// return user to the saved scroll position (e.g.)
 	}
 
 	nameChangedHandler = (event, id) => {
